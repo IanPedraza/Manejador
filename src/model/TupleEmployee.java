@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class TupleEmployee extends Tuple {
 
     private int employeeId;
@@ -145,6 +147,37 @@ public class TupleEmployee extends Tuple {
                 + "\nmanagerId: " + managerId
                 + "\ndepartmentId: " + departmentId
                 + "\n**********************************";
+    }
+
+    @Override
+    public Boolean equalsTo(Tuple tupla) {
+        TupleEmployee e = (TupleEmployee) tupla;
+        
+        /*        
+         private int employeeId;
+         private String firstName;
+         private String lastName;
+         private String email;
+         private String phoneNumber;
+         private String hireDate;
+         private String jobId;
+         private Double salary;
+         private Double commissionPct;
+         private int managerId;
+         private int departmentId;
+         */
+            
+        return employeeId == e.getEmployeeId() &&
+                firstName.equals(e.firstName) &&
+                lastName.equals(e.lastName) &&
+                email.equals(e.email) &&
+                phoneNumber.equals(e.phoneNumber) &&
+                hireDate.equals(e.hireDate) &&
+                jobId.equals(e.jobId) &&
+                Objects.equals(salary, e.salary) &&
+                Objects.equals(commissionPct, e.commissionPct) &&
+                managerId == e.managerId &&
+                departmentId == e.departmentId;
     }
 
 }

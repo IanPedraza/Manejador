@@ -13,16 +13,22 @@ public class Manejador {
         
         //Obtenemos la tabla
         Table table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
-//        printTable(table);
+        System.out.println("Tabla completa **************************************");
+        printTable(table);
         
-//        //Hacemos la seleccion
-//        Table selectionResult = dbManager.between(10000.0, 15000.0, table);
+        //Hacemos la seleccion
+        Table selectionResult = dbManager.between(1000.0, 2500.0, table);
+        System.out.println("Tabla Selección **************************************");
+        printTable(selectionResult);
 //        
-//        //Eliminamos las tuplas repetidas
-//        Table filteredTable = dbManager.filterRepeatedTuples(selectionResult);
-//        
-//        //Hacemos la proyección
-//        dbManager.firstNameSalaryProjection(filteredTable);
+        //Eliminamos las tuplas repetidas
+        Table filteredTable = dbManager.filterRepeatedTuples(selectionResult);
+        System.out.println("Tabla Filtrada **************************************");
+        printTable(filteredTable);
+        
+        //Hacemos la proyección
+        System.out.println("Tabla Proyección **************************************");
+        dbManager.firstNameSalaryProjection(filteredTable);
     }
 
 }

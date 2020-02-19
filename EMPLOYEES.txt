@@ -1,11 +1,4 @@
 EMPLOYEES
 000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
 000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
-000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00002400000000120000050
+000127               James                   Landry                  JLANDRY        650.124.133414/01/99  ST_CLERK00000240000000120000050
