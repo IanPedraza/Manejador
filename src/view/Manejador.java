@@ -14,6 +14,7 @@ public class Manejador {
         //Obtenemos la tabla
         Table table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
 //        printTable(table);
+        dataManager.MostrarTabla(table);
         
 //        //Hacemos la seleccion
 //        Table selectionResult = dbManager.between(10000.0, 15000.0, table);
