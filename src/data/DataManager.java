@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 import model.Attribute;
 import model.Table;
+import model.Tuple;
 import model.TupleEmployee;
 import static model.Utils.getString;
 
@@ -104,6 +105,18 @@ public class DataManager {
         }
 
         return table;
+    }
+    
+    public void MostrarTabla(Table tabla) {
+        System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("| EMPLOYEE_ID |      FIRST_NAME      |         LAST_NAME         |           EMAIL           |     PHONE_NUMBER     | HIRE_DATE |   JOB_ID   |  SALARY  | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        
+        for (Tuple t : tabla.getTuplesList()) {
+            TupleEmployee e = (TupleEmployee) t;
+            System.out.printf("|      %6d | %-20s | %-25s | %-25s | %-20s |  %-8s | %-10s | %8.2f |           %1.2f |     %6d |        %6d |",e.getEmployeeId(), e.getFirstName(), e.getLastName(), e.getEmail(), e.getPhoneNumber(), e.getHireDate(),e.getJobId(), e.getSalary(), e.getCommissionPct(), e.getManagerId(),e.getDepartmentId());
+            System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        }
     }
 
 }

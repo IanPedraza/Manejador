@@ -20,6 +20,7 @@ public class Manejador {
         
         //Obtenemos la tabla
         Table table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
+
         System.out.println("Tabla completa **************************************");
         printTable(table);
         
@@ -41,7 +42,7 @@ public class Manejador {
         attrs.add("FIRST_NAME");
         attrs.add("SALARY");
         attrs.add("EMAIL");
-        
+
         //HAcemos la proyección
         List<List<String>> projection = dbManager.projection(attrs, filteredTable);
         printProjection(projection);
