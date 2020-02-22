@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class TupleEmployee extends Tuple {
@@ -188,6 +190,25 @@ public class TupleEmployee extends Tuple {
             default:
                 return null;
         }
+    }
+    
+    @Override
+    public List<String> toArrayString(){
+        List<String> list = new ArrayList();
+       
+        list.add(String.valueOf(employeeId));
+        list.add(String.valueOf(firstName));
+        list.add(String.valueOf(lastName));
+        list.add(String.valueOf(email));
+        list.add(String.valueOf(phoneNumber));
+        list.add(String.valueOf(hireDate));
+        list.add(String.valueOf(jobId));
+        list.add(String.valueOf(salary));
+        list.add(String.valueOf(commissionPct));
+        list.add(String.valueOf(managerId));
+        list.add(String.valueOf(employeeId));
+        
+        return list;
     }
 
     @Override

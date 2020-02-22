@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Tuple {
    
     public Boolean equalsTo(Tuple tupla){
@@ -7,6 +9,10 @@ public class Tuple {
     }
     
     public String getAttrFromString(String attr){
+        return null;
+    }
+    
+    public List<String> toArrayString(){
         return null;
     }
     
