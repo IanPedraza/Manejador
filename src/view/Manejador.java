@@ -5,6 +5,7 @@ import data.dbManager;
 import java.util.ArrayList;
 import java.util.List;
 import model.Table;
+import static model.Utils.printProjection;
 import static model.Utils.printTable;
 
 public class Manejador {
@@ -43,12 +44,7 @@ public class Manejador {
         
         //HAcemos la proyección
         List<List<String>> projection = dbManager.projection(attrs, filteredTable);
-        
-        //Imprimimos el resultado
-        for(List<String> l : projection){
-            String joinedString = String.join("\t", l);
-            System.out.println(joinedString);
-        }
+        printProjection(projection);
     }
 
 }
