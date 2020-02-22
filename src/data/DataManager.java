@@ -118,5 +118,15 @@ public class DataManager {
             System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
+    
+    public List<String> dictionaryToArrayString(){
+        List<String> list = new ArrayList();
+        
+        for(Attribute a : dictionary){
+            list.add(a.getFieldName());
+        }
+        
+        return list;
+    }
 
 }
