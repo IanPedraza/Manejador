@@ -2,12 +2,18 @@ package view;
 
 import data.DataManager;
 import data.dbManager;
+import java.util.ArrayList;
+import java.util.List;
 import model.Table;
 import static model.Utils.printTable;
 
 public class Manejador {
 
     public static void main(String[] args) {
+        dbTest();
+    }
+    
+    public static void dbTest(){
         DataManager dataManager = new DataManager();
         dbManager dbManager = new dbManager();
         
@@ -20,7 +26,7 @@ public class Manejador {
         Table selectionResult = dbManager.between(1000.0, 2500.0, table);
         System.out.println("Tabla Selección **************************************");
         printTable(selectionResult);
-//        
+        
         //Eliminamos las tuplas repetidas
         Table filteredTable = dbManager.filterRepeatedTuples(selectionResult);
         System.out.println("Tabla Filtrada **************************************");
@@ -28,7 +34,21 @@ public class Manejador {
         
         //Hacemos la proyección
         System.out.println("Tabla Proyección **************************************");
-        dbManager.firstNameSalaryProjection(filteredTable);
+        
+        //Creamos la lista de atributos que queremos hacer en la proyección
+        List<String> attrs = new ArrayList();
+        attrs.add("FIRST_NAME");
+        attrs.add("SALARY");
+        attrs.add("EMAIL");
+        
+        //HAcemos la proyección
+        List<List<String>> projection = dbManager.projection(attrs, filteredTable);
+        
+        //Imprimimos el resultado
+        for(List<String> l : projection){
+            String joinedString = String.join("\t", l);
+            System.out.println(joinedString);
+        }
     }
 
 }

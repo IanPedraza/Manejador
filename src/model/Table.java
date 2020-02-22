@@ -12,6 +12,12 @@ public class Table {
         this.tuplesList = tuplesList;
         this.tableName = tableName;
     }
+    
+    public Table(Table t) {
+        this.tuplesList = new ArrayList();
+        this.tuplesList.addAll(t.tuplesList);
+        this.tableName = t.tableName;
+    }
 
     public Table() {
         this.tuplesList = new ArrayList();
