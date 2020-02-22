@@ -150,34 +150,61 @@ public class TupleEmployee extends Tuple {
     }
 
     @Override
+    public String getAttrFromString(String attr) {
+        switch (attr) {
+            case "EMPLOYEE_ID":
+                return String.valueOf(employeeId);
+
+            case "FIRST_NAME":
+                return String.valueOf(firstName);
+
+            case "LAST_NAME":
+                return String.valueOf(lastName);
+
+            case "EMAIL":
+                return String.valueOf(email);
+
+            case "PHONE_NUMBER":
+                return String.valueOf(phoneNumber);
+
+            case "HIRE_DATE":
+                return String.valueOf(hireDate);
+
+            case "JOB_ID":
+                return String.valueOf(jobId);
+
+            case "SALARY":
+                return String.valueOf(this.salary);
+
+            case "COMMISSION_PCT":
+                return String.valueOf(commissionPct);
+
+            case "MANAGER_ID":
+                return String.valueOf(managerId);
+
+            case "DEPARTMENT_ID":
+                return String.valueOf(departmentId);
+
+            default:
+                return null;
+        }
+    }
+
+    @Override
     public Boolean equalsTo(Tuple tupla) {
         TupleEmployee e = (TupleEmployee) tupla;
-        
-        /*        
-         private int employeeId;
-         private String firstName;
-         private String lastName;
-         private String email;
-         private String phoneNumber;
-         private String hireDate;
-         private String jobId;
-         private Double salary;
-         private Double commissionPct;
-         private int managerId;
-         private int departmentId;
-         */
-            
-        return employeeId == e.getEmployeeId() &&
-                firstName.equals(e.firstName) &&
-                lastName.equals(e.lastName) &&
-                email.equals(e.email) &&
-                phoneNumber.equals(e.phoneNumber) &&
-                hireDate.equals(e.hireDate) &&
-                jobId.equals(e.jobId) &&
-                Objects.equals(salary, e.salary) &&
-                Objects.equals(commissionPct, e.commissionPct) &&
-                managerId == e.managerId &&
-                departmentId == e.departmentId;
+
+        return employeeId == e.getEmployeeId()
+                && firstName.equals(e.firstName)
+                && lastName.equals(e.lastName)
+                && email.equals(e.email)
+                && phoneNumber.equals(e.phoneNumber)
+                && hireDate.equals(e.hireDate)
+                && jobId.equals(e.jobId)
+                && Objects.equals(salary, e.salary)
+                && Objects.equals(commissionPct, e.commissionPct)
+                && managerId == e.managerId
+                && departmentId == e.departmentId;
     }
 
 }

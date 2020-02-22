@@ -6,4 +6,8 @@ public class Tuple {
         return true;
     }
     
+    public String getAttrFromString(String attr){
+        return null;
+    }
+    
 }

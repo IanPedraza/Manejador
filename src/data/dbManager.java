@@ -58,55 +58,16 @@ public class dbManager implements ISelection, IProjection {
             List<String> tuplaSalida = new ArrayList();
 
             for (String attr : attrs) {
-                String value = getValueAttr(attr, employee);
-                if(value != null) tuplaSalida.add(value);
+                String value = employee.getAttrFromString(attr);
+                if (value != null) {
+                    tuplaSalida.add(value);
+                }
             }
 
             salida.add(tuplaSalida);
         }
 
         return salida;
-    }
-
-    private String getValueAttr(String attr, TupleEmployee e) {
-
-        switch (attr) {
-            case "EMPLOYEE_ID":
-                return String.valueOf(e.getEmployeeId());
-
-            case "FIRST_NAME":
-                return String.valueOf(e.getFirstName());
-
-            case "LAST_NAME":
-                return String.valueOf(e.getLastName());
-
-            case "EMAIL":
-                return String.valueOf(e.getEmail());
-
-            case "PHONE_NUMBER":
-                return String.valueOf(e.getPhoneNumber());
-
-            case "HIRE_DATE":
-                return String.valueOf(e.getHireDate());
-
-            case "JOB_ID":
-                return String.valueOf(e.getJobId());
-
-            case "SALARY":
-                return String.valueOf(e.getSalary());
-
-            case "COMMISSION_PCT":
-                return String.valueOf(e.getCommissionPct());
-
-            case "MANAGER_ID":
-                return String.valueOf(e.getManagerId());
-
-            case "DEPARTMENT_ID":
-                return String.valueOf(e.getDepartmentId());
-
-            default:
-                return null;
-        }
     }
 
 }
