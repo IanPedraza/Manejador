@@ -206,7 +206,7 @@ public class TupleEmployee extends Tuple {
         list.add(String.valueOf(salary));
         list.add(String.valueOf(commissionPct));
         list.add(String.valueOf(managerId));
-        list.add(String.valueOf(employeeId));
+        list.add(String.valueOf(departmentId));
         
         return list;
     }
