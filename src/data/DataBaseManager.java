@@ -28,24 +28,26 @@ public class DataBaseManager implements ISelection, IProjection {
     }
 
     @Override
-    public Table filterRepeatedTuples(Table table) {
-        Table tableResult = new Table();
-        Table tableAux = new Table(table);
+    public List<List<String>> filterRepeatedTuples( List<List<String>> table) {
+        
+        List<List<String>> tableAux = new ArrayList(table);
 
-        tableResult.setTableName(table.getTableName());
 
-        for (Tuple t : table.getTuplesList()) {
-            TupleEmployee e = (TupleEmployee) t;
-
-            for (Tuple t2 : table.getTuplesList()) {
-                TupleEmployee e2 = (TupleEmployee) t2;
-                if (e != e2 && e.equals(e2)) {
-                    tableAux.deleteTuple(t2);
+        for (List lista : tableAux) {
+            List listaStr = (List) lista;
+            int repeatCont=0;
+            for (List t2 : table) {
+                List e2 = (List) t2;
+                if ( listaStr.equals(e2)) {
+                    if(repeatCont>0){
+                        tableAux.remove(t2);
+                    }else{
+                        repeatCont=1;
+                    }
                 }
             }
 
         }
-
         return tableAux;
     }
 
