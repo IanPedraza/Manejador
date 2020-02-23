@@ -8,7 +8,7 @@ import model.Table;
 import model.Tuple;
 import model.TupleEmployee;
 
-public class dbManager implements ISelection, IProjection {
+public class DataBaseManager implements ISelection, IProjection {
 
     @Override
     public Table between(Double lowestValue, Double highestValue, Table table) {
@@ -52,7 +52,9 @@ public class dbManager implements ISelection, IProjection {
     @Override
     public List<List<String>> projection(List<String> attrs, Table employeesTable) {
         List<List<String>> salida = new ArrayList();
-
+        if(attrs == null) return salida;
+        
+        
         for (Tuple t : employeesTable.getTuplesList()) {
             TupleEmployee employee = (TupleEmployee) t;
             List<String> tuplaSalida = new ArrayList();

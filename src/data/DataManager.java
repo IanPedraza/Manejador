@@ -20,7 +20,7 @@ public class DataManager {
     }
 
     public Table loadTable(String descriptorPath, String tablePath) {
-
+        this.dictionary = new ArrayList();
         Table table = new Table();
 
         try {
