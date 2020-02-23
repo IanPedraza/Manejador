@@ -113,9 +113,9 @@ public class Window extends JFrame {
     private void initComponents() throws IOException {
         //Menu
         JMenuBar barra = new JMenuBar();
-        JMenu fileMenu = new JMenu("Archivo");
-        
-        
+        JMenu fileMenu = new JMenu("File");
+        JMenu runMenu = new JMenu("Run");
+        JMenu windowMenu = new JMenu("Window");
         
         JMenuItem itemRefresh = new JMenuItem(new AbstractAction("Refresh") {
             public void actionPerformed(ActionEvent e) {
@@ -123,10 +123,28 @@ public class Window extends JFrame {
             }
         });
         
+        JMenuItem itemRun = new JMenuItem(new AbstractAction("Run") {
+            public void actionPerformed(ActionEvent e) {
+                menuListener.onMenuItemSelected("Run");
+            }
+        });
+        
+        JMenuItem itemClose = new JMenuItem(new AbstractAction("Close") {
+            public void actionPerformed(ActionEvent e) {
+                menuListener.onMenuItemSelected("Close");
+            }
+        });
+        
         itemRefresh.setIcon(new ImageIcon("images/ic_refres_small.png"));
+        itemRun.setIcon(new ImageIcon("images/ic_run_small.png"));
 
         fileMenu.add(itemRefresh);
+        runMenu.add(itemRun);
+        windowMenu.add(itemClose);
+        
         barra.add(fileMenu);
+        barra.add(runMenu);
+        barra.add(windowMenu);
         setJMenuBar(barra);
         //Menu
         
@@ -135,7 +153,7 @@ public class Window extends JFrame {
         
         //Icons Menu        
         JPanel menuIcons = new JPanel();
-        menuIcons.setLayout(new FlowLayout(FlowLayout.LEFT));
+        menuIcons.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 5));
         menuIcons.setPreferredSize(new Dimension(0, 45));
         menuIcons.setBackground(Color.WHITE);
         
@@ -154,7 +172,24 @@ public class Window extends JFrame {
             }
         });
         
-        menuIcons.add(BorderLayout.CENTER, btn_refresh);    
+        
+        BufferedImage ic_run = ImageIO.read(new File("images/ic_run.png"));
+        JButton btn_run = new JButton(new ImageIcon(ic_run));
+        btn_run.setBorder(BorderFactory.createEmptyBorder());
+        btn_run.setPreferredSize(new Dimension(30, 30));
+        btn_run.setSize(30, 30);    
+        btn_run.setContentAreaFilled(false);
+        
+        btn_run.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                menuListener.onMenuItemSelected("Run");
+            }
+        });
+        
+        menuIcons.add(btn_refresh);  
+        menuIcons.add(btn_run);  
         //Icons Menu
         
         //Panel Pestañas

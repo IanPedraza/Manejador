@@ -6,6 +6,7 @@ import interfaces.AttributeSelectedListener;
 import interfaces.MenuListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -28,13 +29,15 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
 
     private static DataManager dataManager;
     private static DataBaseManager dbManager;
+    
+    private Table table;
 
     public void start() {
         dataManager = new DataManager();
         dbManager = new DataBaseManager();
 
         //Obtenemos la tabla
-        Table table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
+        table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
 
         //Creamos la ventana
         window = new Window(this, this);
@@ -214,6 +217,14 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         switch (option) {
             case "Refresh":
                 refreshTable();
+                break;
+                
+            case "Run":
+                makeQuery(table);
+                break;
+                
+            case "Close":
+                window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));
                 break;
         }
     }
