@@ -121,9 +121,6 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         //printTable(selectionResult);
 
         //Eliminamos las tuplas repetidas
-        Table filteredTable = dbManager.filterRepeatedTuples(selectionResult);
-        System.out.println("Tabla Filtrada **************************************");
-        //printTable(filteredTable);
 
         //Hacemos la proyección
         System.out.println("Tabla Proyección **************************************");
@@ -135,8 +132,14 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         attrs.add("EMAIL");
 
         //HAcemos la proyección
-        List<List<String>> projection = dbManager.projection(attrs, filteredTable);
+        List<List<String>> projection = dbManager.projection(attrs, selectionResult);
         //printProjection(projection);
+
+        List<List<String>> filteredTable = dbManager.filterRepeatedTuples(projection);
+        System.out.println("Tabla Filtrada **************************************");
+        //printProjection(filteredTable);
+
+
     }
 
     public static void makeQuery(Table table) {
@@ -159,12 +162,14 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
                     //Cargamos la selección a la vista
                     loadTable(selectionResult, window.getSelectionTable(), dataManager.dictionaryToArrayString());
 
-                    //Eliminamos las tuplas repetidas
-                    Table filteredTable = dbManager.filterRepeatedTuples(selectionResult);
-
                     //Hacemos la proyección
-                    List<List<String>> projection = dbManager.projection(attrs, filteredTable);
-                    loadTableFromArrayString(projection, window.getProyectionTable(), attrs);
+                    List<List<String>> projection = dbManager.projection(attrs, selectionResult);
+
+                    //Eliminamos las tuplas repetidas
+                    List<List<String>>  filteredTable = dbManager.filterRepeatedTuples(projection);
+                    
+                    //Cargamos la proyeccion con las tuplas filtradas
+                    loadTableFromArrayString(filteredTable, window.getProyectionTable(), attrs);
 
                     JOptionPane.showMessageDialog(null, projection.size() + " resultados");
                 } else {
