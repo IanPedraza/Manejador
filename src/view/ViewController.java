@@ -154,32 +154,36 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
             String valueStart = tfStart.getText();
             String valueEnd = tfEnd.getText();
 
-            if (!valueStart.isEmpty()) {
-                if (!valueEnd.isEmpty()) {
-                    rangeSart = Double.parseDouble(valueStart);
-                    rangeEnd = Double.parseDouble(valueEnd);
+            if (attrs.size()>0) {
+                if (!valueStart.isEmpty()) {
+                    if (!valueEnd.isEmpty()) {
+                        rangeSart = Double.parseDouble(valueStart);
+                        rangeEnd = Double.parseDouble(valueEnd);
 
-                    //Hacemos la selección
-                    Table selectionResult = dbManager.between(rangeSart, rangeEnd, table);
+                        //Hacemos la selección
+                        Table selectionResult = dbManager.between(rangeSart, rangeEnd, table);
 
-                    //Cargamos la selección a la vista
-                    loadTable(selectionResult, window.getSelectionTable(), dataManager.dictionaryToArrayString());
+                        //Cargamos la selección a la vista
+                        loadTable(selectionResult, window.getSelectionTable(), dataManager.dictionaryToArrayString());
 
-                    //Hacemos la proyección
-                    List<List<String>> projection = dbManager.projection(attrs, selectionResult);
+                        //Hacemos la proyección
+                        List<List<String>> projection = dbManager.projection(attrs, selectionResult);
 
-                    //Eliminamos las tuplas repetidas
-                    List<List<String>>  filteredTable = dbManager.filterRepeatedTuples(projection);
-                    
-                    //Cargamos la proyeccion con las tuplas filtradas
-                    loadTableFromArrayString(filteredTable, window.getProyectionTable(), attrs);
+                        //Eliminamos las tuplas repetidas
+                        List<List<String>>  filteredTable = dbManager.filterRepeatedTuples(projection);
 
-                    JOptionPane.showMessageDialog(null, projection.size() + " resultados");
+                        //Cargamos la proyeccion con las tuplas filtradas
+                        loadTableFromArrayString(filteredTable, window.getProyectionTable(), attrs);
+
+                        JOptionPane.showMessageDialog(null, projection.size() + " resultados");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El valor final no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "El valor final no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El valor inicial no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "El valor inicial no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun campo para la proyeccion", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Los valores del rango no son válidos", "Error", JOptionPane.ERROR_MESSAGE);
