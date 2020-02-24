@@ -37,7 +37,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         dbManager = new DataBaseManager();
 
         //Obtenemos la tabla
-        table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
+        table = dataManager.loadTable("data/descriptor.txt", "data/EMPLOYEES.txt");
 
         //Creamos la ventana
         window = new Window(this, this);
@@ -48,11 +48,8 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         tfStart = window.getTfRangeStart();
         tfEnd = window.getTfRangeEnd();
 
-        buttonQuery.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                makeQuery(table);
-            }
+        buttonQuery.addActionListener((ActionEvent e) -> {
+            makeQuery(table);
         });
 
         //Cargamos la tabla completa

@@ -8,7 +8,7 @@ import model.Table;
 import model.Tuple;
 import model.TupleEmployee;
 
-public class DataBaseManager implements ISelection, IProjection {
+    public class DataBaseManager implements ISelection, IProjection {
 
     @Override
     public Table between(Double lowestValue, Double highestValue, Table table) {
