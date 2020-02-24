@@ -319,7 +319,8 @@ public class Window extends JFrame {
 
         add(BorderLayout.CENTER, panelDivider);
         add(BorderLayout.WEST, new JScrollPane(optionsPanel));
-
+        
+        tfRangeStart.setSize(80,80);
         setSize(1800, 1000);
         setLocationRelativeTo(null);
         setVisible(true);

@@ -69,7 +69,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
                 return false;
             }
         };
-
+        //agregando table a la vista jtable recibida por parametros
         if (table != null) {
             for (Tuple t : table.getTuplesList()) {
                 TupleEmployee e = (TupleEmployee) t;
@@ -83,21 +83,23 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         model.fireTableDataChanged();
         jtable.setModel(model);
     }
-
+    //cargar la tabla
     public static void loadTableFromArrayString(List<List<String>> data, JTable jtable, List<String> columnNames) {
         if (columnNames == null) {
             return;
         }
-
+        //se crea objeto que recibe columnas 
         DefaultTableModel model = new DefaultTableModel(null, columnNames.toArray()) {
             @Override
+            //evita editar los datos de la tabla
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-
+        //se agregan las filas a la tabla
         if(data != null){
             for (List<String> row : data) {
+                //al modelo de la tablaba le agrega una fila
                 model.addRow(row.toArray());
             }
         }else{
@@ -151,6 +153,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         Double rangeEnd = 0.0;
 
         try {
+            //captura de rangos
             String valueStart = tfStart.getText();
             String valueEnd = tfEnd.getText();
 

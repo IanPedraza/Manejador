@@ -18,11 +18,11 @@ public class DataManager {
     public DataManager() {
         this.dictionary = new ArrayList();
     }
-
+//recibe los directorios de descriptor 
     public Table loadTable(String descriptorPath, String tablePath) {
         this.dictionary = new ArrayList();
         Table table = new Table();
-
+        
         try {
             createDictionary(descriptorPath);
             table = createTable(tablePath);
