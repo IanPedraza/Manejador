@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -147,13 +148,12 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
 
     }
 
-    public static void makeQuery(Table table) {
+  public static void makeQuery(Table table) {
         //Obetener Rangos
         Double rangeSart = 0.0;
         Double rangeEnd = 0.0;
 
         try {
-            //captura de rangos
             String valueStart = tfStart.getText();
             String valueEnd = tfEnd.getText();
 
@@ -162,23 +162,38 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
                     if (!valueEnd.isEmpty()) {
                         rangeSart = Double.parseDouble(valueStart);
                         rangeEnd = Double.parseDouble(valueEnd);
+                        
+                        if(rangeSart < 0 ){
+                            JOptionPane.showMessageDialog(null, "El rango inicial no puede ser menor a cero", "Error", JOptionPane.ERROR_MESSAGE);
+                        }else{
+                           if(rangeEnd < rangeSart){
+                               JOptionPane.showMessageDialog(null, "El rango final no puede ser menor al rango inicial", "Error", JOptionPane.ERROR_MESSAGE);
+                           }else{
+                               if(rangeEnd<0){
+                                   JOptionPane.showMessageDialog(null, "El rango final no puede ser menor a cero", "Error", JOptionPane.ERROR_MESSAGE);
+                               }else{
+                                   if(Objects.equals(rangeEnd, rangeSart)){
+                                     JOptionPane.showMessageDialog(null, "Los rangos inicial y final no pueden ser iguales", "Error", JOptionPane.ERROR_MESSAGE);  
+                                   }      
+                                    //Hacemos la selección
+                                    Table selectionResult = dbManager.between(rangeSart, rangeEnd, table);
 
-                        //Hacemos la selección
-                        Table selectionResult = dbManager.between(rangeSart, rangeEnd, table);
+                                    //Cargamos la selección a la vista
+                                    loadTable(selectionResult, window.getSelectionTable(), dataManager.dictionaryToArrayString());
 
-                        //Cargamos la selección a la vista
-                        loadTable(selectionResult, window.getSelectionTable(), dataManager.dictionaryToArrayString());
+                                    //Hacemos la proyección
+                                    List<List<String>> projection = dbManager.projection(attrs, selectionResult);
 
-                        //Hacemos la proyección
-                        List<List<String>> projection = dbManager.projection(attrs, selectionResult);
+                                    //Eliminamos las tuplas repetidas
+                                    List<List<String>>  filteredTable = dbManager.filterRepeatedTuples(projection);
 
-                        //Eliminamos las tuplas repetidas
-                        List<List<String>>  filteredTable = dbManager.filterRepeatedTuples(projection);
+                                    //Cargamos la proyeccion con las tuplas filtradas
+                                    loadTableFromArrayString(filteredTable, window.getProyectionTable(), attrs);
 
-                        //Cargamos la proyeccion con las tuplas filtradas
-                        loadTableFromArrayString(filteredTable, window.getProyectionTable(), attrs);
-
-                        JOptionPane.showMessageDialog(null, projection.size() + " resultados");
+                                    JOptionPane.showMessageDialog(null, projection.size() + " resultados");
+                               }
+                           }
+                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "El valor final no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -192,7 +207,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
             JOptionPane.showMessageDialog(null, "Los valores del rango no son válidos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+  
     private static void refreshTable() {
         Table table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
         attrs = new ArrayList();
