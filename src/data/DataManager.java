@@ -105,27 +105,8 @@ public class DataManager {
 
         return table;
     }
-<<<<<<< HEAD
-    
-    // Impresion de la tabla con un formato estructurado 
-    public void MostrarTabla(Table tabla) {
-        //Impresion de los atributos
-        System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("| EMPLOYEE_ID |      FIRST_NAME      |         LAST_NAME         |           EMAIL           |     PHONE_NUMBER     | HIRE_DATE |   JOB_ID   |  SALARY  | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        //Impresion de los valores que toma
-        for (Tuple t : tabla.getTuplesList()) {
-            TupleEmployee e = (TupleEmployee) t;
-            System.out.printf("|      %6d | %-20s | %-25s | %-25s | %-20s |  %-8s | %-10s | %8.2f |           %1.2f |     %6d |        %6d |",e.getEmployeeId(), e.getFirstName(), e.getLastName(), e.getEmail(), e.getPhoneNumber(), e.getHireDate(),e.getJobId(), e.getSalary(), e.getCommissionPct(), e.getManagerId(),e.getDepartmentId());
-            System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        }
-    }
-    
-    public List<String> dictionaryToArrayString(){
-=======
 
     public List<String> dictionaryToArrayString() {
->>>>>>> test
         List<String> list = new ArrayList();
 
         for (Attribute a : dictionary) {
