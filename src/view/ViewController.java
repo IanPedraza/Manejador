@@ -195,7 +195,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
     }
 
     private static void refreshTable() {
-        Table table = dataManager.loadTable("descriptor.txt", "EMPLOYEES.txt");
+        Table table = dataManager.loadTable("data/descriptor.txt", "data/EMPLOYEES.txt");
         attrs = new ArrayList();
 
         //Cargamos la tabla completa
@@ -207,6 +207,8 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         loadTable(null, window.getSelectionTable(), dataManager.dictionaryToArrayString());
         loadTableFromArrayString(null, window.getProyectionTable(), attrs);
 
+        loadTableDictinary(dataManager.getDictionary(), window.getDictionaryTable(), dataManager.getColumns());
+        
         JOptionPane.showMessageDialog(null, "Tabla actualizada");
     }
 
