@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 import model.Attribute;
 import model.Table;
-import model.Tuple;
 import model.TupleEmployee;
 import static model.Utils.getString;
 
@@ -19,6 +18,7 @@ public class DataManager {
         this.dictionary = new ArrayList();
     }
 
+    //recibe los directorios de descriptor 
     public Table loadTable(String descriptorPath, String tablePath) {
         this.dictionary = new ArrayList();
         Table table = new Table();
@@ -54,7 +54,6 @@ public class DataManager {
 
             this.dictionary.add(attribute);
         }
-
     }
 
     private Table createTable(String tablePath) throws FileNotFoundException {
@@ -106,6 +105,7 @@ public class DataManager {
 
         return table;
     }
+<<<<<<< HEAD
     
     // Impresion de la tabla con un formato estructurado 
     public void MostrarTabla(Table tabla) {
@@ -122,12 +122,38 @@ public class DataManager {
     }
     
     public List<String> dictionaryToArrayString(){
+=======
+
+    public List<String> dictionaryToArrayString() {
+>>>>>>> test
         List<String> list = new ArrayList();
-        
-        for(Attribute a : dictionary){
+
+        for (Attribute a : dictionary) {
             list.add(a.getFieldName());
         }
-        
+
+        return list;
+    }
+
+    public List<Attribute> getDictionary() {
+        return dictionary;
+    }
+
+    public void setDictionary(List<Attribute> dictionary) {
+        this.dictionary = dictionary;
+    }
+
+    public List<String> getColumns() {
+        List<String> list = new ArrayList();
+
+        list.add("FIELD_NAME");
+        list.add("INITIAL_POSITION");
+        list.add("LENGHT");
+        list.add("TYPE");
+        list.add("INITIAL_VALUE");
+        list.add("LOWEST_VALUE");
+        list.add("HIGHEST_VALUE");
+
         return list;
     }
 

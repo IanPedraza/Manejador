@@ -18,13 +18,12 @@ public class Utils {
             System.out.println(e);
         }
     }
-    
-    public static void printProjection(List<List<String>> projection){
-        for(List<String> l : projection){
+
+    public static void printProjection(List<List<String>> projection) {
+        for (List<String> l : projection) {
             String joinedString = String.join("\t", l);
             System.out.println(joinedString);
         }
     }
-            
 
 }

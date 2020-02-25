@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Attribute {
 
     private String fieldName;
@@ -88,16 +91,6 @@ public class Attribute {
 
     @Override
     public String toString() {
-        /*
-         private String fieldName;
-         private int initialPosition;
-         private int lenght;
-         private String type;
-         private String initialValue;
-         private String lowestValue;
-         private String highestValue;
-         */
-
         return "\nfieldName: " + fieldName
                 + "\ninitialPosition: " + initialPosition
                 + "\nlenght: " + lenght
@@ -106,6 +99,20 @@ public class Attribute {
                 + "\nlowestValue: " + lowestValue
                 + "\nhighestValue: " + highestValue
                 + "\n**************************************";
+    }
+
+    public List<String> toArrayString() {
+        List<String> list = new ArrayList();
+
+        list.add(String.valueOf(fieldName));
+        list.add(String.valueOf(initialPosition));
+        list.add(String.valueOf(initialPosition));
+        list.add(String.valueOf(type));
+        list.add(String.valueOf(initialValue));
+        list.add(String.valueOf(lowestValue));
+        list.add(String.valueOf(highestValue));
+
+        return list;
     }
 
 }
