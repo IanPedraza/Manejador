@@ -299,14 +299,14 @@ public class Window extends JFrame {
 
         //Panel de Opciones
         add(BorderLayout.CENTER, panelDivider);
-        
+
         JScrollPane scrollOptions = new JScrollPane(optionsPanel);
-                
+
         scrollOptions.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
         scrollOptions.getViewport().setBorder(null);
         scrollOptions.setViewportBorder(null);
         scrollOptions.setBorder(null);
-        
+
         add(BorderLayout.WEST, scrollOptions);
 
         tfRangeStart.setSize(80, 80);
