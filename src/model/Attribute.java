@@ -106,7 +106,7 @@ public class Attribute {
 
         list.add(String.valueOf(fieldName));
         list.add(String.valueOf(initialPosition));
-        list.add(String.valueOf(initialPosition));
+        list.add(String.valueOf(lenght));
         list.add(String.valueOf(type));
         list.add(String.valueOf(initialValue));
         list.add(String.valueOf(lowestValue));
