@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -12,3 +13,19 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/chiva/Documents/NetBeansProjects/Manejador/Manejador/src/data/DataBaseManager.java</file>
+            <file>file:/C:/Users/chiva/Documents/NetBeansProjects/Manejador/Manejador/src/view/ViewController.java</file>
+            <file>file:/C:/Users/chiva/Documents/NetBeansProjects/Manejador/Manejador/src/data/DataManager.java</file>
+            <file>file:/C:/Users/chiva/Documents/NetBeansProjects/Manejador/Manejador/src/model/Attribute.java</file>
+            <file>file:/C:/Users/chiva/Documents/NetBeansProjects/Manejador/Manejador/src/view/Window.java</file>
+            <file>file:/C:/Users/chiva/Documents/NetBeansProjects/Manejador/Manejador/src/model/TupleEmployee.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> 2fbe430118f96f17872f8ed04ec63568ed1c1d6e
