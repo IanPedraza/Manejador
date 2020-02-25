@@ -127,13 +127,13 @@ public class DataManager {
     public List<String> getColumns() {
         List<String> list = new ArrayList();
 
-        list.add("fieldName");
-        list.add("initialPosition");
-        list.add("lenght");
-        list.add("type");
-        list.add("initialValue");
-        list.add("lowestValue");
-        list.add("highestValue");
+        list.add("FIELD_NAME");
+        list.add("INITIAL_POSITION");
+        list.add("LENGHT");
+        list.add("TYPE");
+        list.add("INITIAL_VALUE");
+        list.add("LOWEST_VALUE");
+        list.add("HIGHEST_VALUE");
 
         return list;
     }

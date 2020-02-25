@@ -234,7 +234,7 @@ public class Window extends JFrame {
         //Panel de opciones
         optionsPanel = new JPanel();
         optionsPanel.setLayout(new GridBagLayout());
-        optionsPanel.setPreferredSize(new Dimension(300, 0));
+        optionsPanel.setPreferredSize(new Dimension(300, 1000));
         optionsPanel.setBackground(bgColor);
         optionsPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -299,7 +299,15 @@ public class Window extends JFrame {
 
         //Panel de Opciones
         add(BorderLayout.CENTER, panelDivider);
-        add(BorderLayout.WEST, new JScrollPane(optionsPanel));
+        
+        JScrollPane scrollOptions = new JScrollPane(optionsPanel);
+                
+        scrollOptions.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+        scrollOptions.getViewport().setBorder(null);
+        scrollOptions.setViewportBorder(null);
+        scrollOptions.setBorder(null);
+        
+        add(BorderLayout.WEST, scrollOptions);
 
         tfRangeStart.setSize(80, 80);
         setSize(1800, 1000);
