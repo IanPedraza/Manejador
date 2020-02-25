@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 import model.Attribute;
 import model.Table;
-import model.Tuple;
 import model.TupleEmployee;
 import static model.Utils.getString;
 
@@ -18,11 +17,12 @@ public class DataManager {
     public DataManager() {
         this.dictionary = new ArrayList();
     }
-//recibe los directorios de descriptor 
+
+    //recibe los directorios de descriptor 
     public Table loadTable(String descriptorPath, String tablePath) {
         this.dictionary = new ArrayList();
         Table table = new Table();
-        
+
         try {
             createDictionary(descriptorPath);
             table = createTable(tablePath);
@@ -54,7 +54,6 @@ public class DataManager {
 
             this.dictionary.add(attribute);
         }
-
     }
 
     private Table createTable(String tablePath) throws FileNotFoundException {
@@ -106,26 +105,14 @@ public class DataManager {
 
         return table;
     }
-    
-    public void MostrarTabla(Table tabla) {
-        System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("| EMPLOYEE_ID |      FIRST_NAME      |         LAST_NAME         |           EMAIL           |     PHONE_NUMBER     | HIRE_DATE |   JOB_ID   |  SALARY  | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        
-        for (Tuple t : tabla.getTuplesList()) {
-            TupleEmployee e = (TupleEmployee) t;
-            System.out.printf("|      %6d | %-20s | %-25s | %-25s | %-20s |  %-8s | %-10s | %8.2f |           %1.2f |     %6d |        %6d |",e.getEmployeeId(), e.getFirstName(), e.getLastName(), e.getEmail(), e.getPhoneNumber(), e.getHireDate(),e.getJobId(), e.getSalary(), e.getCommissionPct(), e.getManagerId(),e.getDepartmentId());
-            System.out.println("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        }
-    }
-    
-    public List<String> dictionaryToArrayString(){
+
+    public List<String> dictionaryToArrayString() {
         List<String> list = new ArrayList();
-        
-        for(Attribute a : dictionary){
+
+        for (Attribute a : dictionary) {
             list.add(a.getFieldName());
         }
-        
+
         return list;
     }
 
@@ -136,20 +123,19 @@ public class DataManager {
     public void setDictionary(List<Attribute> dictionary) {
         this.dictionary = dictionary;
     }
-    
-    public List<String> getColumns(){
+
+    public List<String> getColumns() {
         List<String> list = new ArrayList();
-        
+
         list.add("fieldName");
         list.add("initialPosition");
         list.add("lenght");
         list.add("type");
         list.add("initialValue");
         list.add("lowestValue");
-        list.add("highestValue");	
-        
-        return list;        
+        list.add("highestValue");
+
+        return list;
     }
-    
 
 }

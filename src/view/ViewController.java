@@ -5,7 +5,6 @@ import data.DataBaseManager;
 import interfaces.AttributeSelectedListener;
 import interfaces.MenuListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
 
         //Cargamos la tabla completa
         loadTable(table, window.getFullTable(), dataManager.dictionaryToArrayString());
-        
+
         loadTableDictinary(dataManager.getDictionary(), window.getDictionaryTable(), dataManager.getColumns());
 
         //Cargamos los atributos
@@ -70,8 +69,8 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
                 return false;
             }
         };
-        
-        //agregando table a la vista jtable recibida por parametros
+
+        //Agregando table a la vista jtable recibida por parametros
         if (dictionary != null) {
             for (Attribute a : dictionary) {
                 model.addRow(a.toArrayString().toArray());
@@ -84,7 +83,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         model.fireTableDataChanged();
         jtable.setModel(model);
     }
-    
+
     public static void loadTable(Table table, JTable jtable, List<String> columnNames) {
         DefaultTableModel model = new DefaultTableModel(null, columnNames.toArray()) {
             @Override
@@ -92,7 +91,8 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
                 return false;
             }
         };
-        //agregando table a la vista jtable recibida por parametros
+
+        //Agregando table a la vista jtable recibida por parametros
         if (table != null) {
             for (Tuple t : table.getTuplesList()) {
                 TupleEmployee e = (TupleEmployee) t;
@@ -107,7 +107,6 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
     }
 
     //cargar la tabla
-
     public static void loadTableFromArrayString(List<List<String>> data, JTable jtable, List<String> columnNames) {
         if (columnNames == null) {
             return;
@@ -208,7 +207,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         loadTableFromArrayString(null, window.getProyectionTable(), attrs);
 
         loadTableDictinary(dataManager.getDictionary(), window.getDictionaryTable(), dataManager.getColumns());
-        
+
         JOptionPane.showMessageDialog(null, "Tabla actualizada");
     }
 

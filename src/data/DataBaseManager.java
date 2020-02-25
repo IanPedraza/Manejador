@@ -28,25 +28,24 @@ public class DataBaseManager implements ISelection, IProjection {
 
         return tableResult;
     }
-    
+
     //Elimina las tuplas repetidas de la proyeccion
     @Override
-    public List<List<String>> filterRepeatedTuples( List<List<String>> table) {
-        
+    public List<List<String>> filterRepeatedTuples(List<List<String>> table) {
+
         List<List<String>> tableAux = new ArrayList(table);
 
-        
         for (List lista : tableAux) {
             List listaStr = (List) lista;
-            int repeatCont=0;
+            int repeatCont = 0;
             for (List t2 : table) {
                 List e2 = (List) t2;
-               //evalua si son iguales
-                if ( listaStr.equals(e2)) {
-                    if(repeatCont>0){
+                //evalua si son iguales
+                if (listaStr.equals(e2)) {
+                    if (repeatCont > 0) {
                         tableAux.remove(t2);
-                    }else{
-                        repeatCont=1;
+                    } else {
+                        repeatCont = 1;
                     }
                 }
             }
@@ -54,12 +53,16 @@ public class DataBaseManager implements ISelection, IProjection {
         }
         return tableAux;
     }
+
     //hace la proyeccion
+
     @Override
     public List<List<String>> projection(List<String> attrs, Table employeesTable) {
         List<List<String>> salida = new ArrayList();
-        if(attrs == null) return salida;
-        
+        if (attrs == null) {
+            return salida;
+        }
+
         //toma los datos empleado por empleado
         for (Tuple t : employeesTable.getTuplesList()) {
             TupleEmployee employee = (TupleEmployee) t;

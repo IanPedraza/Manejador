@@ -4,30 +4,22 @@ import interfaces.AttributeSelectedListener;
 import interfaces.MenuListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -42,14 +34,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import model.Table;
-import model.Tuple;
-import model.TupleEmployee;
 
 public class Window extends JFrame {
 
@@ -92,7 +79,7 @@ public class Window extends JFrame {
         setTitle("File Descriptor");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
-        
+
         ImageIcon icon = new ImageIcon("images/icon.png");
         setIconImage(icon.getImage());
 
@@ -118,82 +105,79 @@ public class Window extends JFrame {
         JMenu fileMenu = new JMenu("File");
         JMenu runMenu = new JMenu("Run");
         JMenu windowMenu = new JMenu("Window");
-        
+
         JMenuItem itemRefresh = new JMenuItem(new AbstractAction("Refresh") {
             public void actionPerformed(ActionEvent e) {
                 menuListener.onMenuItemSelected("Refresh");
             }
         });
-        
+
         JMenuItem itemRun = new JMenuItem(new AbstractAction("Run") {
             public void actionPerformed(ActionEvent e) {
                 menuListener.onMenuItemSelected("Run");
             }
         });
-        
+
         JMenuItem itemClose = new JMenuItem(new AbstractAction("Close") {
             public void actionPerformed(ActionEvent e) {
                 menuListener.onMenuItemSelected("Close");
             }
         });
-        
+
         itemRefresh.setIcon(new ImageIcon("images/ic_refres_small.png"));
         itemRun.setIcon(new ImageIcon("images/ic_run_small.png"));
 
         fileMenu.add(itemRefresh);
         runMenu.add(itemRun);
         windowMenu.add(itemClose);
-        
+
         barra.add(fileMenu);
         barra.add(runMenu);
         barra.add(windowMenu);
         setJMenuBar(barra);
         //Menu
-        
+
         JPanel panelDivider = new JPanel();
         panelDivider.setLayout(new BorderLayout());
-        
+
         //Icons Menu        
         JPanel menuIcons = new JPanel();
         menuIcons.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 5));
         menuIcons.setPreferredSize(new Dimension(0, 45));
         menuIcons.setBackground(Color.WHITE);
-        
+
         BufferedImage ic_refresh = ImageIO.read(new File("images/ic_refresh.png"));
         btn_refresh = new JButton(new ImageIcon(ic_refresh));
         btn_refresh.setBorder(BorderFactory.createEmptyBorder());
         btn_refresh.setPreferredSize(new Dimension(30, 30));
-        btn_refresh.setSize(30, 30);    
+        btn_refresh.setSize(30, 30);
         btn_refresh.setContentAreaFilled(false);
-        
-        btn_refresh.addActionListener(new ActionListener(){
 
+        btn_refresh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menuListener.onMenuItemSelected("Refresh");
             }
         });
-        
-        
+
         BufferedImage ic_run = ImageIO.read(new File("images/ic_run.png"));
         JButton btn_run = new JButton(new ImageIcon(ic_run));
         btn_run.setBorder(BorderFactory.createEmptyBorder());
         btn_run.setPreferredSize(new Dimension(30, 30));
-        btn_run.setSize(30, 30);    
+        btn_run.setSize(30, 30);
         btn_run.setContentAreaFilled(false);
-        
-        btn_run.addActionListener(new ActionListener(){
 
+        btn_run.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 menuListener.onMenuItemSelected("Run");
             }
         });
-        
-        menuIcons.add(btn_refresh);  
-        menuIcons.add(btn_run);  
+
+        menuIcons.add(btn_refresh);
+        menuIcons.add(btn_run);
         //Icons Menu
-        
+
         //Panel Pestañas
         tabbedPanel = new JTabbedPane();
         tabbedPanel.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
@@ -207,7 +191,7 @@ public class Window extends JFrame {
 
         panelProyectionTable = new JPanel();
         panelProyectionTable.setLayout(new BorderLayout());
-        
+
         panelDictionary = new JPanel();
         panelDictionary.setLayout(new BorderLayout());
 
@@ -215,11 +199,11 @@ public class Window extends JFrame {
         modelSelectionTable = new DefaultTableModel();
         modelProyectionTable = new DefaultTableModel();
         modelDictionary = new DefaultTableModel();
-           
+
         dictionaryTable = new JTable(modelDictionary);
         dictionaryTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
-        dictionaryTable.setRowHeight(row_height);                  
-                  
+        dictionaryTable.setRowHeight(row_height);
+
         fullTable = new JTable(modelFullTable);
         fullTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
         fullTable.setRowHeight(row_height);
@@ -242,7 +226,7 @@ public class Window extends JFrame {
         tabbedPanel.addTab("Seleción", panelSelecitionTable);
         tabbedPanel.addTab("Proyección", panelProyectionTable);
         tabbedPanel.setSelectedIndex(1);
-        
+
         panelDivider.add(BorderLayout.CENTER, new JScrollPane(tabbedPanel));
         panelDivider.add(BorderLayout.NORTH, menuIcons);
         //Panel de Pestañas
@@ -252,7 +236,7 @@ public class Window extends JFrame {
         optionsPanel.setLayout(new GridBagLayout());
         optionsPanel.setPreferredSize(new Dimension(300, 0));
         optionsPanel.setBackground(bgColor);
-        optionsPanel.setBorder( BorderFactory.createEmptyBorder(0,0,0,0) );
+        optionsPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         chekboxPanel = new JPanel();
         chekboxPanel.setBackground(bgColor);
@@ -316,8 +300,8 @@ public class Window extends JFrame {
         //Panel de Opciones
         add(BorderLayout.CENTER, panelDivider);
         add(BorderLayout.WEST, new JScrollPane(optionsPanel));
-        
-        tfRangeStart.setSize(80,80);
+
+        tfRangeStart.setSize(80, 80);
         setSize(1800, 1000);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -489,6 +473,4 @@ public class Window extends JFrame {
         this.dictionaryTable = dictionaryTable;
     }
 
-    
-    
 }

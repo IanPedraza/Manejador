@@ -12,7 +12,7 @@ public class Table {
         this.tuplesList = tuplesList;
         this.tableName = tableName;
     }
-    
+
     public Table(Table t) {
         this.tuplesList = new ArrayList();
         this.tuplesList.addAll(t.tuplesList);
@@ -24,14 +24,14 @@ public class Table {
         this.tableName = "";
     }
 
-    public void addTuple(Tuple tuple){
+    public void addTuple(Tuple tuple) {
         this.tuplesList.add(tuple);
     }
-    
-    public void deleteTuple(Tuple tuple){
+
+    public void deleteTuple(Tuple tuple) {
         this.tuplesList.remove(tuple);
     }
-    
+
     public List<Tuple> getTuplesList() {
         return tuplesList;
     }
@@ -46,6 +46,6 @@ public class Table {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
-    }    
-    
+    }
+
 }

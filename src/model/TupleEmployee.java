@@ -136,7 +136,6 @@ public class TupleEmployee extends Tuple {
 
     @Override
     public String toString() {
-
         return "\nemployeeId: " + employeeId
                 + "\nfirstName: " + firstName
                 + "\nlastName: " + lastName
@@ -191,11 +190,11 @@ public class TupleEmployee extends Tuple {
                 return null;
         }
     }
-    
+
     @Override
-    public List<String> toArrayString(){
+    public List<String> toArrayString() {
         List<String> list = new ArrayList();
-       
+
         list.add(String.valueOf(employeeId));
         list.add(String.valueOf(firstName));
         list.add(String.valueOf(lastName));
@@ -207,7 +206,7 @@ public class TupleEmployee extends Tuple {
         list.add(String.valueOf(commissionPct));
         list.add(String.valueOf(managerId));
         list.add(String.valueOf(departmentId));
-        
+
         return list;
     }
 
