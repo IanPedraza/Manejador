@@ -129,4 +129,27 @@ public class DataManager {
         return list;
     }
 
+    public List<Attribute> getDictionary() {
+        return dictionary;
+    }
+
+    public void setDictionary(List<Attribute> dictionary) {
+        this.dictionary = dictionary;
+    }
+    
+    public List<String> getColumns(){
+        List<String> list = new ArrayList();
+        
+        list.add("fieldName");
+        list.add("initialPosition");
+        list.add("lenght");
+        list.add("type");
+        list.add("initialValue");
+        list.add("lowestValue");
+        list.add("highestValue");	
+        
+        return list;        
+    }
+    
+
 }

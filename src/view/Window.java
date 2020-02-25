@@ -60,13 +60,15 @@ public class Window extends JFrame {
     private JPanel panelProyectionTable;
     private JPanel optionsPanel;
     private JPanel chekboxPanel;
-    private JPanel bannerPanel;
+    private JPanel panelDictionary;
 
     private DefaultTableModel modelFullTable;
     private DefaultTableModel modelSelectionTable;
     private DefaultTableModel modelProyectionTable;
+    private DefaultTableModel modelDictionary;
 
     private JTable fullTable;
+    private JTable dictionaryTable;
     private JTable selectionTable;
     private JTable proyectionTable;
 
@@ -205,11 +207,19 @@ public class Window extends JFrame {
 
         panelProyectionTable = new JPanel();
         panelProyectionTable.setLayout(new BorderLayout());
+        
+        panelDictionary = new JPanel();
+        panelDictionary.setLayout(new BorderLayout());
 
         modelFullTable = new DefaultTableModel();
         modelSelectionTable = new DefaultTableModel();
         modelProyectionTable = new DefaultTableModel();
-
+        modelDictionary = new DefaultTableModel();
+           
+        dictionaryTable = new JTable(modelDictionary);
+        dictionaryTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
+        dictionaryTable.setRowHeight(row_height);                  
+                  
         fullTable = new JTable(modelFullTable);
         fullTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
         fullTable.setRowHeight(row_height);
@@ -225,10 +235,13 @@ public class Window extends JFrame {
         panelFullTable.add(BorderLayout.CENTER, new JScrollPane(fullTable));
         panelSelecitionTable.add(BorderLayout.CENTER, new JScrollPane(selectionTable));
         panelProyectionTable.add(BorderLayout.CENTER, new JScrollPane(proyectionTable));
+        panelDictionary.add(BorderLayout.CENTER, new JScrollPane(dictionaryTable));
 
+        tabbedPanel.addTab("Diccionario", panelDictionary);
         tabbedPanel.addTab("Tabla Completa", panelFullTable);
         tabbedPanel.addTab("Seleción", panelSelecitionTable);
         tabbedPanel.addTab("Proyección", panelProyectionTable);
+        tabbedPanel.setSelectedIndex(1);
         
         panelDivider.add(BorderLayout.CENTER, new JScrollPane(tabbedPanel));
         panelDivider.add(BorderLayout.NORTH, menuIcons);
@@ -301,22 +314,6 @@ public class Window extends JFrame {
         optionsPanel.add(btnQuery, gbc);
 
         //Panel de Opciones
-        //Panel Banner
-        bannerPanel = new JPanel();
-        bannerPanel.setLayout(new BorderLayout());
-        bannerPanel.setPreferredSize(new Dimension(1000, 80));
-        bannerPanel.setBackground(bgColor);
-
-        JLabel labelTitle = new JLabel(" Manejador   ");
-        labelTitle.setFont(new Font("Consolas", Font.BOLD, 45));
-
-        BufferedImage myPicture = ImageIO.read(new File("images/banner.jpg"));
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-
-        bannerPanel.add(BorderLayout.WEST, labelTitle);
-        //bannerPanel.add(BorderLayout.CENTER, picLabel);
-        //Panel Banner
-
         add(BorderLayout.CENTER, panelDivider);
         add(BorderLayout.WEST, new JScrollPane(optionsPanel));
         
@@ -484,4 +481,14 @@ public class Window extends JFrame {
         this.listener = listener;
     }
 
+    public JTable getDictionaryTable() {
+        return dictionaryTable;
+    }
+
+    public void setDictionaryTable(JTable dictionaryTable) {
+        this.dictionaryTable = dictionaryTable;
+    }
+
+    
+    
 }
