@@ -54,6 +54,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         });
 
         //Cargamos la tabla completa
+        window.getTabbedPanel().setTitleAt(1, table.getTableName());
         loadTable(table, window.getFullTable(), dataManager.dictionaryToArrayString());
 
         loadTableDictinary(dataManager.getDictionary(), window.getDictionaryTable(), dataManager.getColumns());
@@ -198,6 +199,7 @@ public class ViewController implements AttributeSelectedListener, MenuListener {
         attrs = new ArrayList();
 
         //Cargamos la tabla completa
+        window.getTabbedPanel().setTitleAt(1, table.getTableName());
         loadTable(table, window.getFullTable(), dataManager.dictionaryToArrayString());
 
         //Cargamos los atributos
