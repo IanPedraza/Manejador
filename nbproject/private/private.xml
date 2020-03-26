@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ianpe/Documents/NetBeansProjects/Manejador/src/view/Window.java</file>
-            <file>file:/C:/Users/ianpe/Documents/NetBeansProjects/Manejador/src/view/ViewController.java</file>
-            <file>file:/C:/Users/ianpe/Documents/NetBeansProjects/Manejador/src/view/Manejador.java</file>
-            <file>file:/C:/Users/ianpe/Documents/NetBeansProjects/Manejador/src/model/Attribute.java</file>
-            <file>file:/C:/Users/ianpe/Documents/NetBeansProjects/Manejador/src/data/DataBaseManager.java</file>
-            <file>file:/C:/Users/ianpe/Documents/NetBeansProjects/Manejador/src/data/DataManager.java</file>
+            <file>file:/home/alexis/NetBeansProjects/Manejador/src/model/TupleEmployee.java</file>
+            <file>file:/home/alexis/NetBeansProjects/Manejador/src/model/TupleDepartments.java</file>
         </group>
     </open-files>
 </project-private>
