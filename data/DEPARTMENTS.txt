@@ -1,0 +1,28 @@
+DEPARTMENTS
+0010                Administration0002001700
+0020                     Marketing0002011800
+0030                    Purchasing0001141700
+0040               Human Resources0002032400
+0050                      Shipping0001211500
+0060                            IT0001031400
+0070              Public Relations0002042700
+0080                         Sales0001452500
+0090                     Executive0001001700
+0100                       Finance0001081700
+0110                    Accounting0002051700
+0120                      Treasury0000001700
+0130                 Corporate Tax0000001700
+0140            Control And Credit0000001700
+0150          Shareholder Services0000001700
+0160                      Benefits0000001700
+0170                 Manufacturing0000001700
+0180                  Construction0000001700
+0190                   Contracting0000001700
+0200                    Operations0000001700
+0210                    IT Support0000001700
+0220                           NOC0000001700
+0230                   IT Helpdesk0000001700
+0240              Government Sales0000001700
+0250                  Retail Sales0000001700
+0260                    Recruiting0000001700
+0270                       Payroll0000001700

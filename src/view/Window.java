@@ -45,24 +45,42 @@ public class Window extends JFrame {
     private JPanel panelFullTable;
     private JPanel panelSelecitionTable;
     private JPanel panelProyectionTable;
+    private JPanel panelSelectionJoin;
+    private JPanel panelProjectionJoin;
+    private JPanel panelProductoJoin;
     private JPanel optionsPanel;
     private JPanel chekboxPanel;
     private JPanel panelDictionary;
 
+    private JPanel panelDictionaryDepartments;
+    private JPanel panelFullTableDepartments;
+
     private DefaultTableModel modelFullTable;
+            private DefaultTableModel modelProductoJoinTable;
     private DefaultTableModel modelSelectionTable;
     private DefaultTableModel modelProyectionTable;
+    private DefaultTableModel modelSelectionJoinTable;
+    private DefaultTableModel modelProyectionJoinTable;
     private DefaultTableModel modelDictionary;
+    private DefaultTableModel modelDictionaryDepartments;
+    private DefaultTableModel modelFullTableDepartments;
 
     private JTable fullTable;
     private JTable dictionaryTable;
+    private JTable productoJoinTable;
     private JTable selectionTable;
     private JTable proyectionTable;
+    private JTable selectionTableJoin;
+    private JTable proyectionTableJoin;
+    private JTable dictionaryTableDepartments;
+    private JTable fullTableDepartments;
 
+    
     private JTextField tfRangeStart;
     private JTextField tfRangeEnd;
 
     private JButton btnQuery;
+    private JButton btnQueryJoin;
     private JButton btn_refresh;
 
     private final String font = "Arial";
@@ -108,19 +126,19 @@ public class Window extends JFrame {
 
         JMenuItem itemRefresh = new JMenuItem(new AbstractAction("Refresh") {
             public void actionPerformed(ActionEvent e) {
-                menuListener.onMenuItemSelected("Refresh");
+                getMenuListener().onMenuItemSelected("Refresh");
             }
         });
 
         JMenuItem itemRun = new JMenuItem(new AbstractAction("Run") {
             public void actionPerformed(ActionEvent e) {
-                menuListener.onMenuItemSelected("Run");
+                getMenuListener().onMenuItemSelected("Run");
             }
         });
 
         JMenuItem itemClose = new JMenuItem(new AbstractAction("Close") {
             public void actionPerformed(ActionEvent e) {
-                menuListener.onMenuItemSelected("Close");
+                getMenuListener().onMenuItemSelected("Close");
             }
         });
 
@@ -156,7 +174,7 @@ public class Window extends JFrame {
         btn_refresh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuListener.onMenuItemSelected("Refresh");
+                getMenuListener().onMenuItemSelected("Refresh");
             }
         });
 
@@ -170,7 +188,7 @@ public class Window extends JFrame {
         btn_run.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuListener.onMenuItemSelected("Run");
+                getMenuListener().onMenuItemSelected("Run");
             }
         });
 
@@ -186,27 +204,59 @@ public class Window extends JFrame {
         panelFullTable = new JPanel();
         panelFullTable.setLayout(new BorderLayout());
 
+        panelFullTableDepartments = new JPanel();
+        panelFullTableDepartments.setLayout(new BorderLayout());
+
         panelSelecitionTable = new JPanel();
         panelSelecitionTable.setLayout(new BorderLayout());
 
         panelProyectionTable = new JPanel();
         panelProyectionTable.setLayout(new BorderLayout());
 
+        panelSelectionJoin = new JPanel();
+        panelSelectionJoin.setLayout(new BorderLayout());
+
+        panelProjectionJoin = new JPanel();
+        panelProjectionJoin.setLayout(new BorderLayout());
+        
+        panelProductoJoin = new JPanel();
+        panelProductoJoin.setLayout(new BorderLayout());
+
         panelDictionary = new JPanel();
         panelDictionary.setLayout(new BorderLayout());
 
+        panelDictionaryDepartments = new JPanel();
+        panelDictionaryDepartments.setLayout(new BorderLayout());
+
         modelFullTable = new DefaultTableModel();
+        modelProductoJoinTable = new DefaultTableModel();
         modelSelectionTable = new DefaultTableModel();
         modelProyectionTable = new DefaultTableModel();
+        modelSelectionJoinTable = new DefaultTableModel();
+        modelProyectionJoinTable = new DefaultTableModel();
         modelDictionary = new DefaultTableModel();
+        modelDictionaryDepartments = new DefaultTableModel();
+        modelFullTableDepartments = new DefaultTableModel();        
 
         dictionaryTable = new JTable(modelDictionary);
         dictionaryTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
         dictionaryTable.setRowHeight(row_height);
+                
+        productoJoinTable = new JTable(modelProductoJoinTable);
+        productoJoinTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
+        productoJoinTable.setRowHeight(row_height);
+        
+        dictionaryTableDepartments = new JTable(modelDictionaryDepartments);
+        dictionaryTableDepartments.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
+        dictionaryTableDepartments.setRowHeight(row_height);
 
         fullTable = new JTable(modelFullTable);
         fullTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
         fullTable.setRowHeight(row_height);
+        
+        fullTableDepartments = new JTable(modelFullTableDepartments);
+        fullTableDepartments.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
+        fullTableDepartments.setRowHeight(row_height);
 
         selectionTable = new JTable(modelSelectionTable);
         selectionTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
@@ -216,16 +266,38 @@ public class Window extends JFrame {
         proyectionTable.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
         proyectionTable.setRowHeight(row_height);
 
+        selectionTableJoin = new JTable(modelSelectionJoinTable);
+        selectionTableJoin.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
+        selectionTableJoin.setRowHeight(row_height);
+
+        proyectionTableJoin = new JTable(modelProyectionJoinTable);
+        proyectionTableJoin.setFont(new Font(font, Font.ROMAN_BASELINE, font_size));
+        proyectionTableJoin.setRowHeight(row_height);
+
         panelFullTable.add(BorderLayout.CENTER, new JScrollPane(fullTable));
         panelSelecitionTable.add(BorderLayout.CENTER, new JScrollPane(selectionTable));
         panelProyectionTable.add(BorderLayout.CENTER, new JScrollPane(proyectionTable));
+        panelSelectionJoin.add(BorderLayout.CENTER, new JScrollPane(selectionTableJoin));
+        panelProjectionJoin.add(BorderLayout.CENTER, new JScrollPane(proyectionTableJoin));
         panelDictionary.add(BorderLayout.CENTER, new JScrollPane(dictionaryTable));
+        panelProductoJoin.add(BorderLayout.CENTER, new JScrollPane(productoJoinTable));
 
-        tabbedPanel.addTab("Diccionario", panelDictionary);
-        tabbedPanel.addTab("Tabla Completa", panelFullTable);
-        tabbedPanel.addTab("Seleción", panelSelecitionTable);
-        tabbedPanel.addTab("Proyección", panelProyectionTable);
-        tabbedPanel.setSelectedIndex(1);
+        panelDictionaryDepartments.add(BorderLayout.CENTER, new JScrollPane(dictionaryTableDepartments));
+        panelFullTableDepartments.add(BorderLayout.CENTER, new JScrollPane(fullTableDepartments));
+
+        tabbedPanel.addTab("Diccionario EMPLOYEES", panelDictionary); 
+        tabbedPanel.addTab("Diccionario DEPARTMENTS", panelDictionaryDepartments);
+
+        tabbedPanel.addTab("EMPLOYEES", panelFullTable);        
+        tabbedPanel.addTab("DEPARTMENTS", panelFullTableDepartments);
+
+        tabbedPanel.addTab("Seleción BETWEEN", panelSelecitionTable);
+        tabbedPanel.addTab("Proyección BETWEEN", panelProyectionTable);
+        
+        tabbedPanel.addTab("Producto Cartesiano JOIN", panelProductoJoin);
+        tabbedPanel.addTab("Seleccion JOIN", panelSelectionJoin);
+        tabbedPanel.addTab("Proyección JOIN", panelProjectionJoin);
+        tabbedPanel.setSelectedIndex(2);
 
         panelDivider.add(BorderLayout.CENTER, new JScrollPane(tabbedPanel));
         panelDivider.add(BorderLayout.NORTH, menuIcons);
@@ -281,21 +353,40 @@ public class Window extends JFrame {
         btnQuery.setForeground(textColor);
 
         btnQuery.setRolloverEnabled(true);
+        
+        /************************/
+        
+                
+        btnQueryJoin = new JButton("Hacer JOIN");
+        btnQueryJoin.setFont(new Font(font, Font.BOLD, font_size));
+        btnQueryJoin.setBackground(bgColor);
+        btnQueryJoin.setContentAreaFilled(false);
 
-        optionsPanel.add(labelLogo, gbc);
-        gbc.insets = new Insets(70, 0, 0, 0);
-        optionsPanel.add(labelRange, gbc);
-        gbc.insets = new Insets(20, 0, 0, 0);
-        optionsPanel.add(tfRangeStart, gbc);
+        btnQueryJoin.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.WHITE, 5),
+                BorderFactory.createLineBorder(bgColor, 8)));
+        btnQueryJoin.setForeground(textColor);
+
+        btnQueryJoin.setRolloverEnabled(true);
+
         gbc.insets = new Insets(10, 0, 0, 0);
+        optionsPanel.add(labelLogo, gbc);
+        //gbc.insets = new Insets(70, 0, 0, 0);
+        optionsPanel.add(labelRange, gbc);
+        //gbc.insets = new Insets(20, 0, 0, 0);
+        optionsPanel.add(tfRangeStart, gbc);
+        //gbc.insets = new Insets(10, 0, 0, 0);
         optionsPanel.add(labelBetween, gbc);
         optionsPanel.add(tfRangeEnd, gbc);
-        gbc.insets = new Insets(30, 0, 0, 0);
+        //gbc.insets = new Insets(30, 0, 0, 0);
         optionsPanel.add(labelAttrs, gbc);
-        gbc.insets = new Insets(10, 0, 0, 0);
+        //gbc.insets = new Insets(10, 0, 0, 0);
         optionsPanel.add(chekboxPanel, gbc);
-        gbc.insets = new Insets(50, 0, 0, 0);
+        //gbc.insets = new Insets(50, 0, 0, 0);
         optionsPanel.add(btnQuery, gbc);
+        //gbc.insets = new Insets(50, 0, 0, 0);
+        optionsPanel.add(btnQueryJoin, gbc);
+        
 
         //Panel de Opciones
         add(BorderLayout.CENTER, panelDivider);
@@ -480,5 +571,167 @@ public class Window extends JFrame {
     public void setDictionaryTable(JTable dictionaryTable) {
         this.dictionaryTable = dictionaryTable;
     }
+
+    public MenuListener getMenuListener() {
+        return menuListener;
+    }
+
+    public void setMenuListener(MenuListener menuListener) {
+        this.menuListener = menuListener;
+    }
+
+    public JPanel getPanelSelectionJoin() {
+        return panelSelectionJoin;
+    }
+
+    public void setPanelSelectionJoin(JPanel panelSelectionJoin) {
+        this.panelSelectionJoin = panelSelectionJoin;
+    }
+
+    public JPanel getPanelProjectionJoin() {
+        return panelProjectionJoin;
+    }
+
+    public void setPanelProjectionJoin(JPanel panelProjectionJoin) {
+        this.panelProjectionJoin = panelProjectionJoin;
+    }
+
+    public JPanel getPanelDictionary() {
+        return panelDictionary;
+    }
+
+    public void setPanelDictionary(JPanel panelDictionary) {
+        this.panelDictionary = panelDictionary;
+    }
+
+    public DefaultTableModel getModelSelectionJoinTable() {
+        return modelSelectionJoinTable;
+    }
+
+    public void setModelSelectionJoinTable(DefaultTableModel modelSelectionJoinTable) {
+        this.modelSelectionJoinTable = modelSelectionJoinTable;
+    }
+
+    public DefaultTableModel getModelProyectionJoinTable() {
+        return modelProyectionJoinTable;
+    }
+
+    public void setModelProyectionJoinTable(DefaultTableModel modelProyectionJoinTable) {
+        this.modelProyectionJoinTable = modelProyectionJoinTable;
+    }
+
+    public DefaultTableModel getModelDictionary() {
+        return modelDictionary;
+    }
+
+    public void setModelDictionary(DefaultTableModel modelDictionary) {
+        this.modelDictionary = modelDictionary;
+    }
+
+    public JTable getSelectionTableJoin() {
+        return selectionTableJoin;
+    }
+
+    public void setSelectionTableJoin(JTable selectionTableJoin) {
+        this.selectionTableJoin = selectionTableJoin;
+    }
+
+    public JTable getProyectionTableJoin() {
+        return proyectionTableJoin;
+    }
+
+    public void setProyectionTableJoin(JTable proyectionTableJoin) {
+        this.proyectionTableJoin = proyectionTableJoin;
+    }
+
+    public JButton getBtn_refresh() {
+        return btn_refresh;
+    }
+
+    public void setBtn_refresh(JButton btn_refresh) {
+        this.btn_refresh = btn_refresh;
+    }
+
+    public JPanel getPanelDictionaryDepartments() {
+        return panelDictionaryDepartments;
+    }
+
+    public void setPanelDictionaryDepartments(JPanel panelDictionaryDepartments) {
+        this.panelDictionaryDepartments = panelDictionaryDepartments;
+    }
+
+    public JPanel getPanelFullTableDepartments() {
+        return panelFullTableDepartments;
+    }
+
+    public void setPanelFullTableDepartments(JPanel panelFullTableDepartments) {
+        this.panelFullTableDepartments = panelFullTableDepartments;
+    }
+
+    public DefaultTableModel getModelDictionaryDepartments() {
+        return modelDictionaryDepartments;
+    }
+
+    public void setModelDictionaryDepartments(DefaultTableModel modelDictionaryDepartments) {
+        this.modelDictionaryDepartments = modelDictionaryDepartments;
+    }
+
+    public DefaultTableModel getModelFullTableDepartments() {
+        return modelFullTableDepartments;
+    }
+
+    public void setModelFullTableDepartments(DefaultTableModel modelFullTableDepartments) {
+        this.modelFullTableDepartments = modelFullTableDepartments;
+    }
+
+    public JTable getDictionaryTableDepartments() {
+        return dictionaryTableDepartments;
+    }
+
+    public void setDictionaryTableDepartments(JTable dictionaryTableDepartments) {
+        this.dictionaryTableDepartments = dictionaryTableDepartments;
+    }
+
+    public JTable getFullTableDepartments() {
+        return fullTableDepartments;
+    }
+
+    public void setFullTableDepartments(JTable fullTableDepartments) {
+        this.fullTableDepartments = fullTableDepartments;
+    }
+
+    public JButton getBtnQueryJoin() {
+        return btnQueryJoin;
+    }
+
+    public void setBtnQueryJoin(JButton btnQueryJoin) {
+        this.btnQueryJoin = btnQueryJoin;
+    }
+
+    public JPanel getPanelProductoJoin() {
+        return panelProductoJoin;
+    }
+
+    public void setPanelProductoJoin(JPanel panelProductoJoin) {
+        this.panelProductoJoin = panelProductoJoin;
+    }
+
+    public DefaultTableModel getModelProductoJoinTable() {
+        return modelProductoJoinTable;
+    }
+
+    public void setModelProductoJoinTable(DefaultTableModel modelProductoJoinTable) {
+        this.modelProductoJoinTable = modelProductoJoinTable;
+    }
+
+    public JTable getProductoJoinTable() {
+        return productoJoinTable;
+    }
+
+    public void setProductoJoinTable(JTable productoJoinTable) {
+        this.productoJoinTable = productoJoinTable;
+    }
+    
+    
 
 }
